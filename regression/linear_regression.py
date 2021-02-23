@@ -21,5 +21,8 @@ print(y)
 #show data with matplot
 fig=plt.figure(figsize=(10,6))
 plt.scatter(x,y,s=90,c='b',marker='*')
+plt.xlabel('size(q.feet)')
+plt.ylabel('price(x100$)')
+plt.title('Houses Dataset')
 plt.show()
 fig.savefig('data.png')
