@@ -13,7 +13,9 @@ Data:
 
 
 Hypothesis without GD:
-![hypothesis without GD](https://user-images.githubusercontent.com/78675207/108819532-33f0d280-75d0-11eb-9b2a-906886acf671.png)
+![hypothesis without GD](https://user-images.githubusercontent.com/78675207/108827729-3278d780-75db-11eb-8549-c663f503ac4a.png)
 
+
+Hypothesis without GD:
 
 
