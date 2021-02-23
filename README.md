@@ -12,3 +12,8 @@ Data:
 ![data](https://user-images.githubusercontent.com/78675207/108813387-2b939a00-75c6-11eb-886f-11cdc074a671.png)
 
 
+Hypothesis without GD:
+![hypothesis without GD](https://user-images.githubusercontent.com/78675207/108819532-33f0d280-75d0-11eb-9b2a-906886acf671.png)
+
+
+
