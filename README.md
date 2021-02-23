@@ -9,5 +9,6 @@ Surface :
 Linear Regression :
 
 Data:
-![data](https://user-images.githubusercontent.com/78675207/108812430-5977df00-75c4-11eb-94fd-3e07c99d53d5.png)
+![data](https://user-images.githubusercontent.com/78675207/108813387-2b939a00-75c6-11eb-886f-11cdc074a671.png)
+
 
