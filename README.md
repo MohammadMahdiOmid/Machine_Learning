@@ -20,4 +20,5 @@ Hypothesis GD:
 
 Loss Function:
 
+![loss function](https://user-images.githubusercontent.com/78675207/108829953-0c086b80-75de-11eb-859a-517391914760.png)
 
