@@ -15,10 +15,9 @@ Hypothesis without GD:
 ![hypothesis without GD](https://user-images.githubusercontent.com/78675207/108827729-3278d780-75db-11eb-8549-c663f503ac4a.png)
 
 
-Hypothesis GD:
+Hypothesis with GD:
 ![hypothesis with GD](https://user-images.githubusercontent.com/78675207/108827905-68b65700-75db-11eb-8258-b7a3647e16ab.png)
 
 Loss Function:
-
 ![loss function](https://user-images.githubusercontent.com/78675207/108829953-0c086b80-75de-11eb-859a-517391914760.png)
 
