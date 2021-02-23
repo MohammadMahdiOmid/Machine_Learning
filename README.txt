@@ -3,4 +3,4 @@ This repository is created for my Machine learning  experiences
 
 Surface : 
 
-< img src : reggresion/sd_surface/surface1.png
+< img src : reggresion/sd_surface/surface1.png>
