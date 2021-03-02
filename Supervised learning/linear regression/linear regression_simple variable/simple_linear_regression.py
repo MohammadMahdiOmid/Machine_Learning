@@ -37,7 +37,6 @@ class LinearRegression:
         plt.scatter(self.x, self.y)
         plt.plot(self.x, predicions, c='r')
         # plot data
-
         plt.show()
 
     # gradient descent
@@ -81,4 +80,5 @@ class LinearRegression:
 
 if __name__ == '__main__':
     lr = LinearRegression()
+    #hyper parameters
     lr.fit(0.0000000005, 80)
