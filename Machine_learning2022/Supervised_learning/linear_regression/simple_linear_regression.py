@@ -16,7 +16,7 @@ class LinearRegression:
         print(x.shape)
         print(y.shape)
 
-        self.horizontal_concatination(x, y)
+        # self.horizontal_concatination(x, y)
 
     def horizontal_concatination(self, x, y):
         x = np.concatenate((np.ones_like(x), x), axis=1)
@@ -26,12 +26,12 @@ class LinearRegression:
         print(y)
 
     def hypothesis(self, theta0, theta1, x):
-        h = theta0 + (theta1 * x)
+        h = theta0 + theta1 * x
         return h
 
-    def cost_function(self, prediction_y):
+    def cost_function(self, prediction_y,y):
         cost = []
-        Jtheta = 0.5 * (sum(prediction_y - self.y) ** 2)
+        Jtheta = 0.5 * ((prediction_y - y) ** 2).mean()
         cost.append(Jtheta)
         return Jtheta
 
@@ -45,34 +45,45 @@ class LinearRegression:
         # plt.plot(self.,'r')
         plt.show()
 
-        self.gradient_descent()
+        # self.gradient_descent()
 
     def gradient_descent(self):
+        global theta0,theta1
+
         # Normalization
         mu = self.X.mean()
         sigma = self.X.std()
         xn = (self.X - mu) / sigma
         print("x normal is:", xn)
 
-        alpha = 5e-3
+        alpha = 5e-2
         theta0 = np.random.randn()
         theta1 = np.random.randn()
+        print("Initial theta_0 is: {0} , theta_1 is: {1}, alpha is: {2}".format(theta0,theta1,alpha))
 
-        prediction_y = self.hypothesis(theta0, theta1, xn)
-        self.cost_function(prediction_y)
+        for i in range(100):
+            prediction_y = self.hypothesis(theta0, theta1, xn)
+            self.cost_function(prediction_y,self.y)
 
-        dtheta0 = (prediction_y - self.y)
-        dtheta1 = dtheta0 * xn
+            dtheta0 = (prediction_y - self.y)
+            dtheta1 = dtheta0 * xn
 
-        theta0 -= alpha * dtheta0.mean()
-        theta1 -= alpha * dtheta1.mean()
+            theta0 -= alpha * dtheta0.mean()
+            theta1 -= alpha * dtheta1.mean()
 
         print(theta0)
         print(theta1)
+
+        plt.figure(figsize=(10,7))
+        y_pre=self.hypothesis(theta0,theta1,xn)
+        plt.scatter(xn,self.y)
+        plt.plot(xn,y_pre,'r')
+        plt.show()
 
 
 if __name__ == '__main__':
     data = np.genfromtxt('data/house_price.txt', delimiter=',')
     print(data)
     obj1 = LinearRegression(data)
-    obj1.demonstrate()
+    obj1.gradient_descent()
+    # obj1.demonstrate()
