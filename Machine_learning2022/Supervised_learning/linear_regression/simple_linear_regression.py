@@ -27,16 +27,15 @@ class LinearRegression:
         print(y)
 
 
-    def hypothesis(self):
-        theta0=0.5
-        theta1=0.5
-        h=theta0+(theta1*self.X)
-
+    def hypothesis(self,theta0,theta1,x):
+        h=theta0+(theta1*x)
         return h
 
 
-    def cost_function(self):
-        Jtheta=0.5*(sum(self.hypothesis()-self.y)**2)
+    def cost_function(self,prediction_y):
+        cost=[]
+        Jtheta=0.5*(sum(prediction_y-self.y)**2)
+        cost.append(Jtheta)
         return Jtheta
     def demonstrate(self):
         plt.figure(figsize=(10,6))
@@ -45,12 +44,31 @@ class LinearRegression:
         plt.ylabel("Price Of Home",color="b")
         plt.scatter(self.X,self.y,marker='*')
 
-        plt.plot(self.X,self.hypothesis(),'r')
+        plt.plot(self.X,self.hypothesis(self.X),'r')
         plt.show()
 
-    def gradient_descent(self):
-        pass
+        self.gradient_descent()
 
+    def gradient_descent(self):
+        # Normalization
+        mu = self.X.mean()
+        sigma = self.X.std()
+        xn = (self.X- mu) / sigma
+        print("x normal is:",xn)
+
+        alpha=0.3
+        theta0=np.random.randn()
+        theta1=np.random.randn()
+
+
+        prediction_y=self.hypothesis(theta0,theta1,xn)
+        self.cost_function(prediction_y)
+
+        dtheta0=(prediction_y-self.y)
+        dtheta1=dtheta0*xn
+
+        theta0 -= (alpha*dtheta0).mean()
+        theta1-=(alpha*dtheta1).mean()
 
 if __name__ == '__main__':
     data = np.genfromtxt('data/house_price.txt', delimiter=',')
