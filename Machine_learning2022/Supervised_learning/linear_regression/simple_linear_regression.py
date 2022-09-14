@@ -2,19 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 class LinearRegression:
-    def __init__(self):
-        pass
+    def __init__(self,data):
 
-    # create random number
-    def create_data(self):
-        x=np.random.randint(100,size=50)
-        print("x is:",x)
+        self.X=data[:,0]
+        self.y=data[:,1]
 
-        y=np.random.randint(100,size=50)
-        print("y is:",y)
-
-
-        self.change_dimention(x,y)
 
     def change_dimention(self,x,y):
         print(x.shape)
@@ -36,16 +28,32 @@ class LinearRegression:
 
 
     def hypothesis(self):
-        pass
+        theta0=0.5
+        theta1=0.5
+        h=theta0+(theta1*self.X)
+
+        return h
 
 
-    def demonstrate(self,x,y):
-        pass
+    def cost_function(self):
+        Jtheta=0.5*(sum(self.hypothesis()-self.y)**2)
+        return Jtheta
+    def demonstrate(self):
+        plt.figure(figsize=(10,6))
+        plt.title("Home Prediction",color="b")
+        plt.xlabel("Size Of Home",color="b")
+        plt.ylabel("Price Of Home",color="b")
+        plt.scatter(self.X,self.y,marker='*')
+
+        plt.plot(self.X,self.hypothesis(),'r')
+        plt.show()
 
     def gradient_descent(self):
         pass
 
 
 if __name__ == '__main__':
-    obj1=LinearRegression()
-    obj1.create_data()
+    data = np.genfromtxt('data/house_price.txt', delimiter=',')
+    print(data)
+    obj1=LinearRegression(data)
+    obj1.demonstrate()
