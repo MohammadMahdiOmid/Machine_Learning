@@ -25,8 +25,15 @@ class LinearRegression:
         print(x.shape)
         print(y.shape)
 
-    def horizontal_concatination(self):
-        pass
+        self.horizontal_concatination(x,y)
+
+    def horizontal_concatination(self,x,y):
+        x=np.concatenate((np.ones_like(x),x),axis=1)
+        y=np.concatenate((np.ones_like(y),y),axis=1)
+
+        print(x)
+        print(y)
+
 
     def hypothesis(self):
         pass
