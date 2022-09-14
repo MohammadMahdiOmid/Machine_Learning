@@ -33,7 +33,8 @@ class LinearRegression:
         cost = []
         Jtheta = 0.5 * ((prediction_y - y) ** 2).mean()
         cost.append(Jtheta)
-        return Jtheta
+        print("Cost is:",cost)
+        return cost
 
     def demonstrate(self):
         plt.figure(figsize=(10, 6))
@@ -49,7 +50,7 @@ class LinearRegression:
 
     def gradient_descent(self):
         global theta0,theta1
-
+        costs=[]
         # Normalization
         mu = self.X.mean()
         sigma = self.X.std()
@@ -61,9 +62,9 @@ class LinearRegression:
         theta1 = np.random.randn()
         print("Initial theta_0 is: {0} , theta_1 is: {1}, alpha is: {2}".format(theta0,theta1,alpha))
 
-        for i in range(100):
+        for i in range(200):
             prediction_y = self.hypothesis(theta0, theta1, xn)
-            self.cost_function(prediction_y,self.y)
+            costs.append(self.cost_function(prediction_y,self.y))
 
             dtheta0 = (prediction_y - self.y)
             dtheta1 = dtheta0 * xn
@@ -80,6 +81,12 @@ class LinearRegression:
         plt.plot(xn,y_pre,'r')
         plt.show()
 
+        print("Oh costs: ",costs)
+        plt.figure(figsize=(8,5))
+        plt.plot(costs,c='r')
+        plt.xlabel('Iteration',c='r')
+        plt.ylabel('Cost',c='r')
+        plt.show()
 
 if __name__ == '__main__':
     data = np.genfromtxt('data/house_price.txt', delimiter=',')
