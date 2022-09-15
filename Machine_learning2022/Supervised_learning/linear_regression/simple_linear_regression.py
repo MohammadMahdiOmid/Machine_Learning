@@ -23,7 +23,6 @@ class LinearRegression:
         return cost
 
     def gradient_descent(self):
-        global theta0, theta1
         costs = []
         # Normalization
         mu = self.X.mean()
