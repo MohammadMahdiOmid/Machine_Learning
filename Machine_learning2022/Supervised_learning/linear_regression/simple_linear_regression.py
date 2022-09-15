@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 class LinearRegression:
     def __init__(self, data):
         # initialize data
-        self.X = data[:, 0]
+        self.x = data[:, 0]
         self.y = data[:, 1]
 
     def hypothesis(self, theta0, theta1, x):
@@ -25,22 +25,23 @@ class LinearRegression:
     def gradient_descent(self):
         costs = []
         # Normalization
-        mu = self.X.mean()
-        sigma = self.X.std()
-        xn = (self.X - mu) / sigma
-        print("x normal is:", xn)
-
+        average = self.x.mean()
+        sigma = self.x.std()
+        normal_x = (self.x - average) / sigma
+        print("x normal is:", normal_x)
+        # HyperParameter
         alpha = 5e-2
+        # create random theta_0 and theta_1 for begin
         theta0 = np.random.randn()
         theta1 = np.random.randn()
         print("Initial theta_0 is: {0} , theta_1 is: {1}, alpha is: {2}".format(theta0, theta1, alpha))
 
         for i in range(180):
-            prediction_y = self.hypothesis(theta0, theta1, xn)
+            prediction_y = self.hypothesis(theta0, theta1, normal_x)
             costs.append(self.cost_function(prediction_y, self.y))
 
             dtheta0 = (prediction_y - self.y)
-            dtheta1 = dtheta0 * xn
+            dtheta1 = dtheta0 * normal_x
 
             theta0 -= alpha * dtheta0.mean()
             theta1 -= alpha * dtheta1.mean()
@@ -49,8 +50,8 @@ class LinearRegression:
         print(theta1)
 
         # To plotting result
-        y_pre = self.hypothesis(theta0, theta1, xn)
-        self.plotting(xn, y_pre, costs)
+        y_pre = self.hypothesis(theta0, theta1, normal_x)
+        self.plotting(normal_x, y_pre, costs)
 
     def plotting(self, normal_x, y_prediction, cost):
         # plotting real data
