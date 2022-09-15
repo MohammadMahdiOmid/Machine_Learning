@@ -1,7 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
-
 class LinearRegression:
     def __init__(self, data):
         # initialize data
@@ -47,8 +45,8 @@ class LinearRegression:
             theta0 -= alpha * dtheta0.mean()
             theta1 -= alpha * dtheta1.mean()
 
-        print(theta0)
-        print(theta1)
+        print("Theta_0 after training is :",theta0)
+        print("Theta_1 after training is :",theta1)
 
         # To plotting result
         y_pre = self.hypothesis(theta0, theta1, normal_x)
