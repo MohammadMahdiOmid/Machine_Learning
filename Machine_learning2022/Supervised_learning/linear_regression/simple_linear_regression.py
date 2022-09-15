@@ -40,10 +40,10 @@ class LinearRegression:
         for i in range(180):
             prediction_y = self.hypothesis(theta0, theta1, normal_x)
             costs.append(self.cost_function(prediction_y, self.y))
-
+            # For derivation
             dtheta0 = (prediction_y - self.y)
             dtheta1 = dtheta0 * normal_x
-
+            # Simultaneous update
             theta0 -= alpha * dtheta0.mean()
             theta1 -= alpha * dtheta1.mean()
 
