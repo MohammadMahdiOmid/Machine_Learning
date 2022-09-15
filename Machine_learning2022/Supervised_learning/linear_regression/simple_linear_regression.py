@@ -14,6 +14,7 @@ class LinearRegression:
         return h
 
     def cost_function(self, prediction_y, y):
+        # create cost for save value of cost function result to demonstrate it
         cost = []
         Jtheta = 0.5 * ((prediction_y - y) ** 2).mean()
         cost.append(Jtheta)
