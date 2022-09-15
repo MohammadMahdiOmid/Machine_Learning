@@ -7,23 +7,6 @@ class LinearRegression:
         self.X = data[:, 0]
         self.y = data[:, 1]
 
-    def change_dimention(self, x, y):
-        print(x.shape)
-        print(y.shape)
-
-        x = x[:, None]
-        y = y[:, None]
-        print(x.shape)
-        print(y.shape)
-
-        # self.horizontal_concatination(x, y)
-
-    def horizontal_concatination(self, x, y):
-        x = np.concatenate((np.ones_like(x), x), axis=1)
-        y = np.concatenate((np.ones_like(y), y), axis=1)
-
-        print(x)
-        print(y)
 
     def hypothesis(self, theta0, theta1, x):
         h = theta0 + theta1 * x
@@ -35,18 +18,6 @@ class LinearRegression:
         cost.append(Jtheta)
         print("Cost is:",cost)
         return cost
-
-    def demonstrate(self):
-        plt.figure(figsize=(10, 6))
-        plt.title("Home Prediction", color="b")
-        plt.xlabel("Size Of Home", color="b")
-        plt.ylabel("Price Of Home", color="b")
-        plt.scatter(self.X, self.y, marker='*')
-
-        # plt.plot(self.,'r')
-        plt.show()
-
-        # self.gradient_descent()
 
     def gradient_descent(self):
         global theta0,theta1
@@ -62,7 +33,7 @@ class LinearRegression:
         theta1 = np.random.randn()
         print("Initial theta_0 is: {0} , theta_1 is: {1}, alpha is: {2}".format(theta0,theta1,alpha))
 
-        for i in range(200):
+        for i in range(180):
             prediction_y = self.hypothesis(theta0, theta1, xn)
             costs.append(self.cost_function(prediction_y,self.y))
 
@@ -75,17 +46,28 @@ class LinearRegression:
         print(theta0)
         print(theta1)
 
-        plt.figure(figsize=(10,7))
+        # To plotting result
         y_pre=self.hypothesis(theta0,theta1,xn)
-        plt.scatter(xn,self.y)
-        plt.plot(xn,y_pre,'r')
+        self.plotting(xn, y_pre,costs)
+
+
+    def plotting(self,normal_x,y_prediction,cost):
+
+        plt.figure(figsize=(10,6))
+        plt.scatter(normal_x,self.y,c='g',marker='*')
+
+        plt.xlabel("Home Size",c='b')
+        plt.ylabel("Home Price",c='b')
+        plt.title("Prediction Hom",c='b')
+
+        plt.plot(normal_x,y_prediction,c='r')
         plt.show()
 
-        print("Oh costs: ",costs)
-        plt.figure(figsize=(8,5))
-        plt.plot(costs,c='r')
-        plt.xlabel('Iteration',c='r')
-        plt.ylabel('Cost',c='r')
+
+        #plot cost function
+        print("Cost values are :",cost)
+        plt.figure(figsize=(10,8))
+        plt.plot(cost,c='r')
         plt.show()
 
 if __name__ == '__main__':
@@ -93,4 +75,3 @@ if __name__ == '__main__':
     print(data)
     obj1 = LinearRegression(data)
     obj1.gradient_descent()
-    # obj1.demonstrate()
