@@ -36,6 +36,7 @@ class LinearRegression:
         theta1 = np.random.randn()
         print("Initial theta_0 is: {0} , theta_1 is: {1}, alpha is: {2}".format(theta0, theta1, alpha))
 
+        # To train algorithem
         for i in range(180):
             prediction_y = self.hypothesis(theta0, theta1, normal_x)
             costs.append(self.cost_function(prediction_y, self.y))
