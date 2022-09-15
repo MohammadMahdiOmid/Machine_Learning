@@ -28,14 +28,14 @@ class LinearRegression:
         normal_x = (self.x - average) / sigma
         print("x normal is:", normal_x)
         # HyperParameter
-        alpha = 5e-2
+        alpha =100e-3
         # create random theta_0 and theta_1 for begin
         theta0 = np.random.randn()
         theta1 = np.random.randn()
         print("Initial theta_0 is: {0} , theta_1 is: {1}, alpha is: {2}".format(theta0, theta1, alpha))
 
         # To train algorithem
-        for i in range(180):
+        for i in range(100):
             prediction_y = self.hypothesis(theta0, theta1, normal_x)
             costs.append(self.cost_function(prediction_y, self.y))
             # For derivation
@@ -54,18 +54,20 @@ class LinearRegression:
 
     def plotting(self, normal_x, y_prediction, cost):
         # plotting real data
-        plt.figure(figsize=(10, 6))
-        plt.scatter(normal_x, self.y, c='g', marker='*')
-        plt.xlabel("Home Size", c='b')
-        plt.ylabel("Home Price", c='b')
-        plt.title("Prediction Hom", c='b')
+        plt.figure(figsize=(8, 5))
+        plt.scatter(normal_x, self.y, c='g', marker='*',s=100)
+        plt.xlabel("Home Size", c='g')
+        plt.ylabel("Home Price", c='g')
+        plt.title("Prediction Home Price", c='g')
         # plotting hypothesis function
         plt.plot(normal_x, y_prediction, c='r')
         plt.show()
         # plot cost function
         print("Cost values are :", cost)
-        plt.figure(figsize=(10, 8))
+        plt.figure(figsize=(8, 6))
+        plt.title("Cost Function",c='r')
         plt.plot(cost, c='r')
+
         plt.show()
 
 
