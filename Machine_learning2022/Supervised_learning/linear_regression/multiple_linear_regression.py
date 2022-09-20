@@ -21,8 +21,6 @@ class MultiplrRegression:
 
     # Cost Function
     def cost_function(self, theta_0, theta_1, theta_2):
-        # To Demonstrate Loss Function
-        cost = []
         # To finding best parameters
         j_theta = 0.5 * ((self.hypothesis(theta_0, theta_1, theta_2) - self.y) ** 2).mean()
         return j_theta
