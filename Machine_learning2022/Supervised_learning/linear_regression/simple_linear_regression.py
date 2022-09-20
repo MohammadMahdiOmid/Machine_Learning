@@ -1,5 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
+
+
 class LinearRegression:
     def __init__(self, data):
         # initialize data
@@ -28,7 +30,7 @@ class LinearRegression:
         normal_x = (self.x - average) / sigma
         print("x normal is:", normal_x)
         # HyperParameter
-        alpha =100e-3
+        alpha = 100e-3
         # create random theta_0 and theta_1 for begin
         theta0 = np.random.randn()
         theta1 = np.random.randn()
@@ -45,17 +47,18 @@ class LinearRegression:
             theta0 -= alpha * dtheta0.mean()
             theta1 -= alpha * dtheta1.mean()
 
-        print("Theta_0 after training is :",theta0)
-        print("Theta_1 after training is :",theta1)
+        print("Theta_0 after training is :", theta0)
+        print("Theta_1 after training is :", theta1)
 
         # To plotting result
         y_pre = self.hypothesis(theta0, theta1, normal_x)
         self.plotting(normal_x, y_pre, costs)
+        self.new_prediction(1750, average, sigma,theta0,theta1)
 
     def plotting(self, normal_x, y_prediction, cost):
         # plotting real data
         plt.figure(figsize=(8, 5))
-        plt.scatter(normal_x, self.y, c='g', marker='*',s=100)
+        plt.scatter(normal_x, self.y, c='g', marker='*', s=100)
         plt.xlabel("Home Size", c='g')
         plt.ylabel("Home Price", c='g')
         plt.title("Prediction Home Price", c='g')
@@ -65,10 +68,17 @@ class LinearRegression:
         # plot cost function
         print("Cost values are :", cost)
         plt.figure(figsize=(8, 6))
-        plt.title("Cost Function",c='r')
+        plt.title("Cost Function", c='r')
         plt.plot(cost, c='r')
 
         plt.show()
+
+    def new_prediction(self, x_test, mu, sigma,theta_0,theta_1):
+        x_test_normal = (x_test - mu) / sigma
+        y_predict=self.hypothesis(theta_0,theta_1,x_test_normal)
+        print("The prediction of {0} is : {1}".format(x_test_normal,y_predict))
+
+
 
 
 if __name__ == '__main__':
