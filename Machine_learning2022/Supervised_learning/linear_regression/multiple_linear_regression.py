@@ -13,16 +13,11 @@ class MultiplrRegression:
         # to scaling data
         scale = StandardScaler()
         self.x = scale.fit_transform(my_x)
-        self.print(self.x)
         self.gradient_descent()
-
-    def print(self, x):
-        print(x[:,0])
-        # print(x['Weight'])
 
     # Hypothesis Function With 2 variable
     def hypothesis(self, theta_0, theta_1, theta_2):
-        return theta_0 + (theta_1 * self.x[:,0]) + (theta_2 * self.x[:,1])
+        return theta_0 + (theta_1 * self.x[:, 0]) + (theta_2 * self.x[:, 1])
 
     # Cost Function
     def cost_function(self, theta_0, theta_1, theta_2):
@@ -47,10 +42,9 @@ class MultiplrRegression:
         for i in range(100):
             # # For derivation
             dtheta0 = (self.hypothesis(theta_0, theta_1, theta_2) - self.y)
-            dtheta1 = ((self.hypothesis(theta_0, theta_1, theta_2) - self.y) * self.x[:,0])
-            dtheta2 = ((self.hypothesis(theta_0, theta_1, theta_2) - self.y) * self.x[:,1])
+            dtheta1 = ((self.hypothesis(theta_0, theta_1, theta_2) - self.y) * self.x[:, 0])
+            dtheta2 = ((self.hypothesis(theta_0, theta_1, theta_2) - self.y) * self.x[:, 1])
             cost.append(self.cost_function(theta_0, theta_1, theta_2))
-
 
             # Simultaneous update
             theta_0 -= alpha * dtheta0.mean()
