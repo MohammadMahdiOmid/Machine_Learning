@@ -29,7 +29,7 @@ class MultiplrRegression:
         return j_theta
 
     def gradient_descent(self):
-        # Hyperparameter added
+        # Hyperparameter
         alpha=5e-3
         # Random theta to start
         theta_0=np.random.randn()
