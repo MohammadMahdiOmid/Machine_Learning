@@ -13,7 +13,7 @@ class MultiplrRegression:
         self.theta_2 = theta_2
         my_x = data[['Volume', 'Weight']]
         self.y = data['CO2']
-
+        # normalization data
         scale = StandardScaler()
         self.x = scale.fit_transform(my_x)
         self.gradient_descent()
