@@ -11,11 +11,11 @@ class MultiplrRegression:
         self.theta_0 = theta_0
         self.theta_1 = theta_1
         self.theta_2 = theta_2
-        my_x = data[['Volume', 'Weight']]
+        data_set = data[['Volume', 'Weight']]
         self.y = data['CO2']
         # normalization data
         scale = StandardScaler()
-        self.x = scale.fit_transform(my_x)
+        self.x = scale.fit_transform(data_set)
         self.gradient_descent()
 
     # Hypothesis Function With 2 variable
